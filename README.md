@@ -30,6 +30,8 @@ You can clone this repo:)
 
 ## What will be checked (as per funcionality)
 
+* If User is able to browse all items supplied by API.
+
 
 ## What will be checked (as per code).
 

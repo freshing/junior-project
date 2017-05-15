@@ -51,6 +51,10 @@ Level:2
 * How proper is your code regarding syntax & formatting
 * How fast is your code
 
+## Sidenotes
+
+This task is not hard, we know it. But it's designed to check if you know all tricks of CSS&HTML, but to see how you organize your code, how you use frameworks (even though this use is minimal).
+
 ## Submitting your work
 
 When finished, send email with your name and link to public repo with solution at [work@jazzy.pro](mailto:work@jazzy.pro)

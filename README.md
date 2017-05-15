@@ -28,7 +28,7 @@ You can clone this repo:)
 * Builded project has to be in _dist_ folder.
 
 
-## What will be checked (as per funcionality)
+## What will be checked (as per functionality)
 
 * If User is able to browse all items supplied by API.
 

@@ -50,3 +50,7 @@ Level:1
 Level:2
 * How proper is your code regarding syntax & formatting
 * How fast is your code
+
+## Submitting your work
+
+When finished, send email with your name and link to public repo with solution at [work@jazzy.pro](mailto:work@jazzy.pro)

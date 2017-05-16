@@ -8,7 +8,7 @@ Your todays task will be to code a simple,dynamic webpage according to provided 
 
 You should code a fully working page based on your framework of choice (we suggest Angular/React) that will:
 ś
-* Look as on designs _([assets/project.png](assets/project.jpg))_
+* Look as on designs _([assets/project.jpg](assets/project.jpg))_
 * Will fetch data for table from API. Documentation for it is availabe at [docs](http://master.datasource.jazzy-hr.jzapp.io/api/doc#get--api-v1-gnomes)
 * Use assets already provided in _assets_ folder
 * Table should display all items availble from API. How much you will be able to display at once, it's up to you.

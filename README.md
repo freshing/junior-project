@@ -12,6 +12,7 @@ You should code a fully working page based on your framework of choice (we sugge
 * Will fetch data for table from API. Documentation for it is availabe at [docs](http://master.datasource.jazzy-hr.jzapp.io/api/doc#get--api-v1-gnomes)
 * Use assets already provided in _assets_ folder
 * Table should display all items availble from API. How much you will be able to display at once, it's up to you.
+* Table should allow to edit item details, after click, a form should be displayed that will allow to update Gnome name, age, and strenght. API endpoint for PATCH is described in docs. Please not that API will randomly return errors, and that data will not be actually stored (so if you will call API GET, it will not get updated data). Design and UI/UX solution for this edit/update form is up to you.
 
 
 You can clone this repo:)

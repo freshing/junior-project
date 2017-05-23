@@ -29,6 +29,12 @@ You can clone this repo:)
 * Ideally would be, if calling ```npm build``` would do everything required to build project (download deps, build all) - it will save our time. (Yes, we know it's not normal)
 * Builded project has to be in _dist_ folder.
 
+## API HTTP return codes
+API returns only:
+* 200 - If everything is ok
+* 422 - If your request was not constructed properlly
+
+If you receive different code, then you made something wrong.
 
 ## What will be checked (as per functionality)
 

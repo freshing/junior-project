@@ -7,12 +7,13 @@ Your todays task will be to code a simple,dynamic webpage according to provided 
 ## Detailed description
 
 You should code a fully working page based on your framework of choice (we suggest Angular/React) that will:
-ś
+
 * Look as on designs _([assets/project.jpg](assets/project.jpg))_
 * Will fetch data for table from API. Documentation for it is availabe at [docs](http://master.datasource.jazzy-hr.jzapp.io/api/doc#get--api-v1-gnomes)
 * Use assets already provided in _assets_ folder
 * Table should display all items availble from API. How much you will be able to display at once, it's up to you.
-* Table should allow to edit item details, after click, a form should be displayed that will allow to update Gnome name, age, and strenght. API endpoint for PATCH is described in docs. Please not that API will randomly return errors, and that data will not be actually stored (so if you will call API GET, it will not get updated data). Design and UI/UX solution for this edit/update form is up to you.
+* Table should allow to edit cell' detail, after click, a form should be displayed that will allow to update Gnome name, age, and strenght. API endpoint for PATCH is described in docs. Please not that API will randomly return errors, and that data will not be actually stored (so if you will call API GET, it will not get updated data). Design and UI/UX solution for this edit/update form is up to you.
+* Font we've used is [https://fonts.google.com/specimen/Work+Sans](https://fonts.google.com/specimen/Work+Sans)
 
 
 You can clone this repo:)
@@ -47,6 +48,7 @@ Level:1
 * If your framework is used in proper way
 * How does you project structure look like, and if you have used any of architecture patterns (in eg: MVC)
 * If you have used any of nice tools like npm, bower, sass, etc.
+* If you have created your css in reusable convention (i.e. BEM)
 
 Level:2
 * How proper is your code regarding syntax & formatting
@@ -54,7 +56,7 @@ Level:2
 
 ## Sidenotes
 
-This task is not hard, we know it. But it's designed to check if you know all tricks of CSS&HTML, but to see how you organize your code, how you use frameworks (even though this use is minimal).
+This task is not hard, we know it. But it's designed not to check if you know all tricks of CSS&HTML, but to see how you organize your code, how you use frameworks (even though this use is minimal).
 
 ## Submitting your work
 

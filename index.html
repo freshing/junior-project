@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Junior project</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row" id="header">
+
+  </div>
+
+<script type="text/babel">
+  var destination = document.querySelector("#container");
+
+  ReactDOM.render(
+    <div>
+      Hello!
+    </div>,
+    destination
+  );
+  </script>
+
+
+  <script type="text/babel">
+    var destination = document.querySelector("#container");
+
+    ReactDOM.render(
+      <div>
+        <div classname="col-sm-1"></div>
+        <div classname="col-sm-1"><img src="assets/logo.png" /></div>
+        <div classname="col-sm-2"></div>
+        <div classname="col-sm-1">Gnoms</div>
+        <div classname="col-sm-2">Trolls</div>
+        <div classname="col-sm-2"><input type="button" text="Create monster"/></div>
+        <div classname="col-sm-1"><img src="assets/avatar.png" /></div>
+        <div classname="col-sm-1"></div>
+      </div>,
+      destination
+    );
+  </script>
+
+
+  <div id="container">
+  </div>
+
+</div>
+
+</body>
+</html>

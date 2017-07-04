@@ -3,9 +3,8 @@ import ReactDOM from 'react-dom';
 
 const dest = document.getElementById('root');
 
-var element = class({
-  render()
-  {
+class Header extends React.Component {
+  render(){
     return (
       <div className="container-fluid">
         <div className="row header">
@@ -20,7 +19,7 @@ var element = class({
         </div>
       </div>
     )
-  },
+  }
   getGnomes(){
     fetch('http://master.datasource.jazzy-hr.jzapp.io/api/v1/gnomes', {
   	   method: 'GET'
@@ -32,9 +31,9 @@ var element = class({
   	     console.log(err);
       });
   }
-})
+}
 
 ReactDOM.render(
-  React.createElement(element),
+  React.createElement(Header),
   dest
 );

@@ -67,14 +67,16 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-document.write(__webpack_require__(1));
+"use strict";
 
+
+document.write(__webpack_require__(1));
 
 /***/ }),
 /* 1 */
 /***/ (function(module, exports) {
 
-throw new Error("Module parse failed: C:\\project\\jazzy-hr-frontend\\page.js Unexpected token (8:14)\nYou may need an appropriate loader to handle this file type.\n| class Header extends React.Component {\r\n|   render() {\r\n|     return  ( <div>\r\n|         <div classname=\"col-sm-1\"></div>\r\n|         <div classname=\"col-sm-1\"><img src=\"assets/logo.png\" /></div>\r");
+throw new Error("Module build failed: SyntaxError: C:/project/jazzy-hr-frontend/mainPage.js: Unexpected token, expected { (6:19)\n\n\u001b[0m \u001b[90m 4 | \u001b[39m\u001b[36mconst\u001b[39m dest \u001b[33m=\u001b[39m document\u001b[33m.\u001b[39mgetElementById(\u001b[32m'root'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 5 | \u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 6 | \u001b[39m\u001b[36mvar\u001b[39m element \u001b[33m=\u001b[39m \u001b[36mclass\u001b[39m({\n \u001b[90m   | \u001b[39m                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 7 | \u001b[39m  render()\n \u001b[90m 8 | \u001b[39m  {\n \u001b[90m 9 | \u001b[39m    \u001b[36mreturn\u001b[39m (\u001b[0m\n");
 
 /***/ })
 /******/ ]);

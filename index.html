@@ -15,38 +15,11 @@
 </head>
 <body>
 
-<div class="container-fluid">
-  <div class="row header">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-1"><img src="assets/logo.png" /></div>
-    <div class="col-sm-2"></div>
-    <div class="col-sm-1"><input type="button" value="Gnomes" onClick="getGnomes()"></div>
-    <div class="col-sm-2">Trolls</div>
-    <div class="col-sm-2"><a href="form.html" class="btn btn-danger btn-lg">Create Monster</a></div>
-    <div class="col-sm-1"><img src="assets/avatar.png" /></div>
-    <div class="col-sm-1"></div>
+  <div id="root">
   </div>
 
-  <div>
-    Gnomes
 
-
-  </div>
-</div>
-
-<script>
-function getGnomes(){
-  fetch('http://master.datasource.jazzy-hr.jzapp.io/api/v1/gnomes', {
-	   method: 'GET'
-   }).then(function(response) {
-	     response.json().then(function(data){
-         console.log(data);
-       })
-    }).catch(function(err) {
-	     console.log(err);
-    });
-}
-</script>
+<script type="text/javascript" src="bundle.js" charset="utf-8"></script>
 
 </body>
 </html>

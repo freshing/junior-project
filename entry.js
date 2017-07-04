@@ -1,1 +1,1 @@
-document.write(require("./page.js"));
+document.write(require("./mainPage.js"));

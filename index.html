@@ -4,8 +4,9 @@
   <title>Junior project</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="styles/style.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
@@ -15,45 +16,35 @@
 <body>
 
 <div class="container-fluid">
-  <div class="row" id="header">
-
+  <div class="row header">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-1"><img src="assets/logo.png" /></div>
+    <div class="col-sm-2"></div>
+    <div class="col-sm-1"><input type="button" value="Gnoms" onClick="getGnomes()"></div>
+    <div class="col-sm-2">Trolls</div>
+    <div class="col-sm-2"><a href="form.html" class="btn btn-danger btn-lg">Create Monster</a></div>
+    <div class="col-sm-1"><img src="assets/avatar.png" /></div>
+    <div class="col-sm-1"></div>
   </div>
 
-<script type="text/babel">
-  var destination = document.querySelector("#container");
-
-  ReactDOM.render(
-    <div>
-      Hello!
-    </div>,
-    destination
-  );
-  </script>
+  <div>
+    Gnoms
 
 
-  <script type="text/babel">
-    var destination = document.querySelector("#container");
-
-    ReactDOM.render(
-      <div>
-        <div classname="col-sm-1"></div>
-        <div classname="col-sm-1"><img src="assets/logo.png" /></div>
-        <div classname="col-sm-2"></div>
-        <div classname="col-sm-1">Gnoms</div>
-        <div classname="col-sm-2">Trolls</div>
-        <div classname="col-sm-2"><input type="button" text="Create monster"/></div>
-        <div classname="col-sm-1"><img src="assets/avatar.png" /></div>
-        <div classname="col-sm-1"></div>
-      </div>,
-      destination
-    );
-  </script>
-
-
-  <div id="container">
   </div>
-
 </div>
+
+<script>
+function getGnomes(){
+  fetch('http://master.datasource.jazzy-hr.jzapp.io/api/doc#get--api-v1-gnomes', {
+	   method: 'GET'
+   }).then(function(response) {
+	     console.log();(response);
+    }).catch(function(err) {
+	     console.log(err);
+    });
+}
+</script>
 
 </body>
 </html>

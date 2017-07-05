@@ -9797,7 +9797,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var container = document.getElementById('root');
+var container = document.getElementById('header');
 
 var Header = function (_React$Component) {
   _inherits(Header, _React$Component);
@@ -22513,31 +22513,28 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var container = document.getElementById('page');
+var container = document.getElementById('gnomes');
 
-var arrayOfGnomes = [{
-  name: 'gnom 1',
-  id: 1
-}, {
-  name: 'gnom 2',
-  id: 2
-}];
+var Gnomes = function (_React$Component) {
+  _inherits(Gnomes, _React$Component);
 
-var MainPage = function (_React$Component) {
-  _inherits(MainPage, _React$Component);
+  function Gnomes(props) {
+    _classCallCheck(this, Gnomes);
 
-  function MainPage() {
-    _classCallCheck(this, MainPage);
+    var _this = _possibleConstructorReturn(this, (Gnomes.__proto__ || Object.getPrototypeOf(Gnomes)).call(this, props));
 
-    return _possibleConstructorReturn(this, (MainPage.__proto__ || Object.getPrototypeOf(MainPage)).apply(this, arguments));
+    _this.state = {
+      arrayOfGnomes: _this.getGnomes()
+    };
+    return _this;
   }
 
-  _createClass(MainPage, [{
+  _createClass(Gnomes, [{
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'container-fluid' },
+        { className: 'container-fluid gnome' },
         _react2.default.createElement(
           'div',
           { className: 'row' },
@@ -22549,47 +22546,76 @@ var MainPage = function (_React$Component) {
           _react2.default.createElement(
             'div',
             { className: 'list-group' },
-            createList(arrayOfGnomes)
+            this.createGnomeList()
           )
         )
       );
     }
+  }, {
+    key: 'createGnomeList',
+    value: function createGnomeList() {
+      if (this.state.arrayOfGnomes) {
+        return this.state.arrayOfGnomes.map(function (gnome) {
+          return _react2.default.createElement(
+            'a',
+            { href: '#', className: 'list-group-item', key: gnome.id },
+            _react2.default.createElement(
+              'container',
+              null,
+              _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                  'ul',
+                  { className: 'gnome' },
+                  _react2.default.createElement(
+                    'li',
+                    { className: 'gnome--name' },
+                    gnome.name
+                  ),
+                  _react2.default.createElement(
+                    'li',
+                    { className: 'gnome--age' },
+                    ' Age: ',
+                    gnome.age
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'gnome--strenght' },
+                gnome.strenght,
+                '/100 ',
+                _react2.default.createElement(
+                  'b',
+                  { className: 'gnome-list' },
+                  'Strenght'
+                )
+              )
+            )
+          );
+        });
+      }
+    }
+  }, {
+    key: 'getGnomes',
+    value: function getGnomes() {
+      fetch('http://master.datasource.jazzy-hr.jzapp.io/api/v1/gnomes', {
+        method: 'GET'
+      }).then(function (response) {
+        response.json().then(function (data) {
+          this.setState({ arrayOfGnomes: data });
+        }.bind(this));
+      }.bind(this)).catch(function (err) {
+        console.log(err);
+      });
+    }
   }]);
 
-  return MainPage;
+  return Gnomes;
 }(_react2.default.Component);
 
-_reactDom2.default.render(_react2.default.createElement(MainPage), container);
-
-function createGnome(name) {
-  return _react2.default.createElement(
-    'a',
-    { href: '#', className: 'list-group-item' },
-    name
-  );
-}
-
-function createList(data) {
-  for (var i = 0; i < data.length; i++) {
-    call(createGnome(data[i].name));
-  }
-}
-
-function getGnomes() {
-  fetch('http://master.datasource.jazzy-hr.jzapp.io/api/v1/gnomes', {
-    method: 'GET'
-  }).then(function (response) {
-    response.json().then(function (data) {
-      return _react2.default.createElement(
-        'a',
-        { href: '#', className: 'list-group-item' },
-        'gnom 1'
-      );
-    });
-  }).catch(function (err) {
-    console.log(err);
-  });
-}
+_reactDom2.default.render(_react2.default.createElement(Gnomes), container);
 
 /***/ })
 /******/ ]);

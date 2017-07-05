@@ -1,8 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans');
+
 .header{
   background-color: #FFFFFF;
+  font-size: 30px;
+  font-family: 'Work Sans', sans-serif;
 }
 
 body{
   background-color: #DFDFDF;
-  font-size: 30px;
+}
+
+.gnome{
+  width: 80%;
+  margin: auto;
+  padding: 10px;
+  font-family: 'Work Sans', sans-serif;
+  list-style-type: none;
+}
+
+.gnome--name{
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.gnome--age{
+
+}
+.gnome--strenght{
+  text-align: right;
+  font-size: 10px;
+  text-align: right;
 }

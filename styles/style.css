@@ -3,33 +3,38 @@ body{
   background-color: #F5F5F5;
 }
 
+a:hover, a:active, a.visited, a:link{
+  color: : #000000;
+  text-decoration: none;
+}
+
 .header{
-    width: 80%;
+  width: 80%;
   background-color: #FFFFFF;
   height: 60px;
-  font-family: 'Work Sans', sans-serif;
 }
 
 .header--elements{
-
+  font-family: 'Work Sans', sans-serif;
   font-weight: bold;
   font-size: 15px;
   margin-top: 10px;
+  color: #000000;
 }
 
 .header--profile{
-  font-weight: bold;
+  font-weight: normal;
   font-size: 15px;
-  margin-top: 10px;
 }
 
 .header--profile-avatar{
-  width: 15%;
+  width: 25%;
   float: left;
 }
 
 .header--profile-name{
-
+  margin-left: 25%;
+  color: #000000;
 }
 
 .gnome{
@@ -53,6 +58,7 @@ body{
 .gnome--name{
   font-weight: bold;
   font-size: 15px;
+  color: #000000;
 }
 
 .gnome--age{

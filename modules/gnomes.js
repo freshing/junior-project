@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import GnomeForm from './form.js';
 
 const container = document.getElementById('gnomes');
 
@@ -25,15 +26,15 @@ class Gnomes extends React.Component {
   createGnomeList() {
     if (this.state.arrayOfGnomes){
       return (this.state.arrayOfGnomes.map(gnome => (
-        <a href="#" className="list-group-item" key={gnome.id}>
+        <a onClick={() => this.onClick(gnome.id)} className="list-group-item" key={gnome.id}>
           <div className="gnome--container">
             <div className="gnome--name">{gnome.name}</div>
               <div className="gnome--age"> Age: {gnome.age}</div>
               </div>
                 <div className="progress gnome--progress">
-                  <div className="progress-bar-danger" role="progressbar" aria-valuenow="70"
+                  <div className="progress-bar-danger" role="progressbar" aria-valuenow={gnome.strenght}
                     aria-valuemin="0" aria-valuemax="100" style={{width: gnome.strenght + '%'}}>
-                       <span className="sr-only">{gnome.strenght+ '% Complete'}</span>
+                    {gnome.strenght + '%'}
                   </div>
                 </div>
             <div className="gnome--strenght">
@@ -53,6 +54,12 @@ class Gnomes extends React.Component {
            console.log(err);
         })
 
+    }
+    onClick(id) {
+      ReactDOM.render(
+        <GnomeForm id={id}/>,
+        document.body
+      );
     }
 }
 

@@ -9812,7 +9812,7 @@ var GnomeForm = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'form',
-        { onSubmit: this.sendForm },
+        { onSubmit: this.sendForm, className: 'form' },
         _react2.default.createElement(
           'label',
           null,
@@ -9851,17 +9851,18 @@ var GnomeForm = function (_React$Component) {
     }
   }, {
     key: 'sendForm',
-    value: function sendForm() {
+    value: function sendForm(event) {
+      event.preventDefault();
       console.log(this.props.id);
-      // fetch('http://master.datasource.jazzy-hr.jzapp.io/api/v1/gnomes/' + this.props.id, {
-      //    method: 'PATCH'
-      //  }).then(function(response) {
-      //      response.json().then(function(data){
-      //        console.log(data);
-      //      })
-      //   }).catch(function(err) {
-      //      console.log(err);
-      //   });
+      fetch('http://master.datasource.jazzy-hr.jzapp.io/api/v1/gnomes/' + this.props.id, {
+        method: 'PATCH'
+      }).then(function (response) {
+        response.json().then(function (data) {
+          console.log(data);
+        });
+      }).catch(function (err) {
+        console.log(err);
+      });
     }
   }]);
 
@@ -9934,19 +9935,19 @@ var Header = function (_React$Component) {
           _react2.default.createElement('div', { className: 'col-sm-1' }),
           _react2.default.createElement(
             'div',
-            { className: 'col-sm-1 header--elements' },
+            { className: 'col-sm-1' },
             _react2.default.createElement(
               'a',
-              { href: '#' },
+              { href: '#', className: 'header--elements' },
               'Gnomes'
             )
           ),
           _react2.default.createElement(
             'div',
-            { className: 'col-sm-4 header--elements' },
+            { className: 'col-sm-4' },
             _react2.default.createElement(
               'a',
-              { href: '#' },
+              { href: '#', className: 'header--elements' },
               'Trolls'
             )
           ),
@@ -22748,7 +22749,7 @@ var Gnomes = function (_React$Component) {
   }, {
     key: 'onClick',
     value: function onClick(id) {
-      _reactDom2.default.render(_react2.default.createElement(_form2.default, { id: id }), document.body);
+      _reactDom2.default.render(_react2.default.createElement(_form2.default, { id: id }), document.getElementById('form'));
     }
   }]);
 

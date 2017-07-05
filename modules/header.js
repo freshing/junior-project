@@ -10,8 +10,8 @@ class Header extends React.Component {
         <div className="row header--elements">
           <div className="col-sm-2"><img src="assets/logo.png" /></div>
           <div className="col-sm-1"></div>
-          <div className="col-sm-1 header--elements"><a href="#">Gnomes</a></div>
-          <div className="col-sm-4 header--elements"><a href="#">Trolls</a></div>
+          <div className="col-sm-1"><a href="#" className="header--elements">Gnomes</a></div>
+          <div className="col-sm-4"><a href="#" className="header--elements">Trolls</a></div>
           <div className="col-sm-2"><a href="form.html" className="btn btn-danger btn-md">Create Monster</a></div>
           <div className="col-sm-2"><a href="#" className="header--profile" >
             <div className="header--profile">

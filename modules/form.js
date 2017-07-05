@@ -18,7 +18,7 @@ var GnomeForm = class Form extends React.Component {
   }
   render(){
     return (
-      <form onSubmit={this.sendForm}>
+      <form onSubmit={this.sendForm} className="form">
          <label>
            Name:
            <input type="text" value={this.state.valueName} onChange={this.handleChangeName} />
@@ -44,17 +44,18 @@ var GnomeForm = class Form extends React.Component {
   handleChangeStrenght(event){
     this.setState({valueStrenght: event.target.valueStrenght});
   }
-  sendForm(){
+  sendForm(event){
+    event.preventDefault();
     console.log(this.props.id);
-    // fetch('http://master.datasource.jazzy-hr.jzapp.io/api/v1/gnomes/' + this.props.id, {
-  	//    method: 'PATCH'
-    //  }).then(function(response) {
-  	//      response.json().then(function(data){
-    //        console.log(data);
-    //      })
-    //   }).catch(function(err) {
-  	//      console.log(err);
-    //   });
+    fetch('http://master.datasource.jazzy-hr.jzapp.io/api/v1/gnomes/' + this.props.id, {
+  	   method: 'PATCH'
+     }).then(function(response) {
+  	     response.json().then(function(data){
+           console.log(data);
+         })
+      }).catch(function(err) {
+  	     console.log(err);
+      });
   }
 }
 

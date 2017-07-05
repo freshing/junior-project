@@ -58,7 +58,7 @@ class Gnomes extends React.Component {
     onClick(id) {
       ReactDOM.render(
         <GnomeForm id={id}/>,
-        document.body
+        document.getElementById('form')
       );
     }
 }

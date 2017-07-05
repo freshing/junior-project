@@ -1,13 +1,35 @@
 @import url('https://fonts.googleapis.com/css?family=Work+Sans');
+body{
+  background-color: #F5F5F5;
+}
 
 .header{
+    width: 80%;
   background-color: #FFFFFF;
-  font-size: 30px;
+  height: 60px;
   font-family: 'Work Sans', sans-serif;
 }
 
-body{
-  background-color: #DFDFDF;
+.header--elements{
+
+  font-weight: bold;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+.header--profile{
+  font-weight: bold;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+.header--profile-avatar{
+  width: 15%;
+  float: left;
+}
+
+.header--profile-name{
+
 }
 
 .gnome{
@@ -18,16 +40,26 @@ body{
   list-style-type: none;
 }
 
+.gnome--container{
+  float: left;
+  width: 70%;
+}
+
+.gnome--progress{
+  width: 15%;
+  float: left;
+}
+
 .gnome--name{
   font-weight: bold;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .gnome--age{
-
+  font-size: 12px;
 }
 .gnome--strenght{
-  text-align: right;
-  font-size: 10px;
+  margin-left: 85%;
+  font-size: 15px;
   text-align: right;
 }

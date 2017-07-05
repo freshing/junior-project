@@ -9813,17 +9813,16 @@ var Header = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'container-fluid' },
+        { className: 'container-fluid header' },
         _react2.default.createElement(
           'div',
-          { className: 'row header' },
-          _react2.default.createElement('div', { className: 'col-sm-1' }),
+          { className: 'row header--elements' },
           _react2.default.createElement(
             'div',
-            { className: 'col-sm-1' },
+            { className: 'col-sm-2' },
             _react2.default.createElement('img', { src: 'assets/logo.png' })
           ),
-          _react2.default.createElement('div', { className: 'col-sm-2' }),
+          _react2.default.createElement('div', { className: 'col-sm-1' }),
           _react2.default.createElement(
             'div',
             { className: 'col-sm-1' },
@@ -9831,7 +9830,7 @@ var Header = function (_React$Component) {
           ),
           _react2.default.createElement(
             'div',
-            { className: 'col-sm-2' },
+            { className: 'col-sm-4' },
             'Trolls'
           ),
           _react2.default.createElement(
@@ -9839,16 +9838,26 @@ var Header = function (_React$Component) {
             { className: 'col-sm-2' },
             _react2.default.createElement(
               'a',
-              { href: 'form.html', className: 'btn btn-danger btn-lg' },
+              { href: 'form.html', className: 'btn btn-danger btn-md' },
               'Create Monster'
             )
           ),
           _react2.default.createElement(
             'div',
-            { className: 'col-sm-1' },
-            _react2.default.createElement('img', { src: 'assets/avatar.png' })
-          ),
-          _react2.default.createElement('div', { className: 'col-sm-1' })
+            { className: 'col-sm-2' },
+            _react2.default.createElement(
+              'a',
+              { href: '#' },
+              _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement('img', { src: 'assets/avatar.png' }),
+                'Robert \u0141abu\u015B',
+                _react2.default.createElement('br', null),
+                ' Game Master'
+              )
+            )
+          )
         )
       );
     }
@@ -22560,37 +22569,43 @@ var Gnomes = function (_React$Component) {
             'a',
             { href: '#', className: 'list-group-item', key: gnome.id },
             _react2.default.createElement(
-              'container',
-              null,
+              'div',
+              { className: 'gnome--container' },
               _react2.default.createElement(
                 'div',
-                null,
-                _react2.default.createElement(
-                  'ul',
-                  { className: 'gnome' },
-                  _react2.default.createElement(
-                    'li',
-                    { className: 'gnome--name' },
-                    gnome.name
-                  ),
-                  _react2.default.createElement(
-                    'li',
-                    { className: 'gnome--age' },
-                    ' Age: ',
-                    gnome.age
-                  )
-                )
+                { className: 'gnome--name' },
+                gnome.name
               ),
               _react2.default.createElement(
                 'div',
-                { className: 'gnome--strenght' },
-                gnome.strenght,
-                '/100 ',
+                { className: 'gnome--age' },
+                ' Age: ',
+                gnome.age
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'progress gnome--progress' },
+              _react2.default.createElement(
+                'div',
+                { className: 'progress-bar-danger', role: 'progressbar', 'aria-valuenow': '70',
+                  'aria-valuemin': '0', 'aria-valuemax': '100', style: { width: gnome.strenght + '%' } },
                 _react2.default.createElement(
-                  'b',
-                  { className: 'gnome-list' },
-                  'Strenght'
+                  'span',
+                  { className: 'sr-only' },
+                  gnome.strenght + '% Complete'
                 )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'gnome--strenght' },
+              gnome.strenght,
+              '/100 ',
+              _react2.default.createElement(
+                'b',
+                null,
+                'Strenght'
               )
             )
           );

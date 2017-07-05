@@ -26,17 +26,19 @@ class Gnomes extends React.Component {
     if (this.state.arrayOfGnomes){
       return (this.state.arrayOfGnomes.map(gnome => (
         <a href="#" className="list-group-item" key={gnome.id}>
-        <container>
-        <div>
-        <ul className="gnome">
-        <li className="gnome--name">{gnome.name}</li>
-        <li className="gnome--age"> Age: {gnome.age}</li>
-        </ul>
-        </div>
-        <div className="gnome--strenght">
-         {gnome.strenght}/100 <b className="gnome-list">Strenght</b>
-        </div>
-        </container>
+          <div className="gnome--container">
+            <div className="gnome--name">{gnome.name}</div>
+              <div className="gnome--age"> Age: {gnome.age}</div>
+              </div>
+                <div className="progress gnome--progress">
+                  <div className="progress-bar-danger" role="progressbar" aria-valuenow="70"
+                    aria-valuemin="0" aria-valuemax="100" style={{width: gnome.strenght + '%'}}>
+                       <span className="sr-only">{gnome.strenght+ '% Complete'}</span>
+                  </div>
+                </div>
+            <div className="gnome--strenght">
+              {gnome.strenght}/100 <b>Strenght</b>
+          </div>
         </a>)))
       }
   }

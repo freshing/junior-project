@@ -20,7 +20,9 @@
     "webpack-dev-server": "^2.5.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./node_modules/.bin/webpack",
+    "start": "./dist/index.html"
   },
   "repository": {
     "type": "git",

@@ -37,13 +37,22 @@ var GnomeForm = class Form extends React.Component {
        body: JSON.stringify( { name: this.state.name, age: this.state.age, strenght: this.state.strenght } )
      }).then(function(response) {
   	     response.json().then(function(data){
-         data.error ? alert('Something went wrong. Try again') : console.log(data);
-        //  console.log(data);
-         })
-      }).catch(function(err) {
+         data.error ? alert('Something went wrong. Try again') : this.updateGnomes(data);
+       }.bind(this))
+      }.bind(this)).catch(function(err) {
         alert('Something went wrong. Try again')
   	    console.log(err);
       });
+  }
+  updateGnomes(data){
+    this.setState({
+      name: '',
+      age: '',
+      strenght: ''
+    });
+    form.style.display = 'none';
+    this.props.parent.state.arrayOfGnomes[data.id] = data;
+    this.props.parent.forceUpdate();
   }
   render(){
     return (

@@ -9836,13 +9836,24 @@ var GnomeForm = function (_React$Component) {
         body: JSON.stringify({ name: this.state.name, age: this.state.age, strenght: this.state.strenght })
       }).then(function (response) {
         response.json().then(function (data) {
-          data.error ? alert('Something went wrong. Try again') : console.log(data);
-          //  console.log(data);
-        });
-      }).catch(function (err) {
+          data.error ? alert('Something went wrong. Try again') : this.updateGnomes(data);
+        }.bind(this));
+      }.bind(this)).catch(function (err) {
         alert('Something went wrong. Try again');
         console.log(err);
       });
+    }
+  }, {
+    key: 'updateGnomes',
+    value: function updateGnomes(data) {
+      this.setState({
+        name: '',
+        age: '',
+        strenght: ''
+      });
+      form.style.display = 'none';
+      this.props.parent.state.arrayOfGnomes[data.id] = data;
+      this.props.parent.forceUpdate();
     }
   }, {
     key: 'render',
@@ -22787,7 +22798,7 @@ var Gnomes = function (_React$Component) {
     key: 'onClick',
     value: function onClick(id) {
       this.gnomeForm ? form.style.display = 'block' : null;
-      this.gnomeForm = _reactDom2.default.render(_react2.default.createElement(_form2.default, { id: id }), document.getElementById('form'));
+      this.gnomeForm = _reactDom2.default.render(_react2.default.createElement(_form2.default, { id: id, parent: this }), document.getElementById('form'));
     }
   }]);
 

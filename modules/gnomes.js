@@ -16,7 +16,7 @@ class Gnomes extends React.Component {
     return (
       <div className="container-fluid gnome">
         <div className="row">
-          <h1> Gnomes</h1>
+           Gnomes
           <div className="list-group">
             {this.createGnomeList()}
           </div>
@@ -26,24 +26,33 @@ class Gnomes extends React.Component {
   }
   createGnomeList() {
     if (this.state.arrayOfGnomes){
-      return (this.state.arrayOfGnomes.map(gnome => (
-        <a onClick={() => this.onClick(gnome.id)} className="list-group-item" key={gnome.id}>
-          <div className="gnome-container">
-            <div className="gnome-name">{gnome.name}</div>
-              <div className="gnome-age"> Age: {gnome.age}</div>
-              </div>
-              <div className="progress gnome-progress">
-                <div className="progress-bar-danger" role="progressbar" aria-valuenow={gnome.strenght}
-                  aria-valuemin="0" aria-valuemax="100" style={{width: gnome.strenght + '%'}}>
-                  {gnome.strenght + '%'}
-                </div>
-              </div>
-
-              <div className="gnome-strenght">
-              {gnome.strenght}/100 <b>Strenght</b>
-          </div>
-        </a>)))
+      return (this.state.arrayOfGnomes.map((gnome, index) => this.createGnome(gnome, index)));
       }
+  }
+  createGnome(gnome, index){
+  //  if (index<100)
+  //  {
+      return (
+        (
+          <a onClick={() => this.onClick(gnome.id)} className="list-group-item" key={gnome.id}>
+            <div className="gnome-container">
+              <div className="gnome-name">{gnome.name}</div>
+                <div className="gnome-age"> Age: {gnome.age}</div>
+                </div>
+                <div className="progress gnome-progress">
+                  <div className="progress-bar" role="progressbar" aria-valuenow="70"
+                    aria-valuemin="0" aria-valuemax="100" style={{width: gnome.strenght + '%'}}>
+                  <span className="sr-only">70% Complete</span>
+                  </div>
+                </div>
+
+                <div className="gnome-strenght">
+                {gnome.strenght}/100 <b>Strenght</b>
+            </div>
+          </a>
+        )
+      )
+  //  }
   }
   getGnomes(){
       fetch('http://master.datasource.jazzy-hr.jzapp.io/api/v1/gnomes', {
@@ -72,12 +81,10 @@ ReactDOM.render(
 );
 
 /*
-<!--
-<div className="progress gnome--progress">
+<div className="progress gnome-progress">
   <div className="progress-bar-danger" role="progressbar" aria-valuenow={gnome.strenght}
     aria-valuemin="0" aria-valuemax="100" style={{width: gnome.strenght + '%'}}>
     {gnome.strenght + '%'}
   </div>
 </div>
--->
 */

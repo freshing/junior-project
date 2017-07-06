@@ -9800,14 +9800,10 @@ var GnomeForm = function (_React$Component) {
       age: '',
       strenght: ''
     };
-    window.onclick = function (event) {
-      if (event.target == form) {
-        form.style.display = 'none';
-      }
-    };
     _this.handleChangeName = _this.handleChangeName.bind(_this);
     _this.handleChangeAge = _this.handleChangeAge.bind(_this);
     _this.handleChangeStrenght = _this.handleChangeStrenght.bind(_this);
+    _this.closeForm = _this.closeForm.bind(_this);
     _this.sendForm = _this.sendForm.bind(_this);
     return _this;
   }
@@ -9844,14 +9840,19 @@ var GnomeForm = function (_React$Component) {
       });
     }
   }, {
-    key: 'updateGnomes',
-    value: function updateGnomes(data) {
+    key: 'closeForm',
+    value: function closeForm() {
       this.setState({
         name: '',
         age: '',
         strenght: ''
       });
       form.style.display = 'none';
+    }
+  }, {
+    key: 'updateGnomes',
+    value: function updateGnomes(data) {
+      this.closeForm();
       this.props.parent.state.arrayOfGnomes[data.id] = data;
       this.props.parent.forceUpdate();
     }
@@ -9866,9 +9867,7 @@ var GnomeForm = function (_React$Component) {
           { onSubmit: this.sendForm, className: 'form-content' },
           _react2.default.createElement(
             'span',
-            { className: 'close', onClick: function onClick() {
-                return form.style.display = 'none';
-              } },
+            { className: 'close', onClick: this.closeForm },
             '\xD7'
           ),
           _react2.default.createElement(
@@ -22716,11 +22715,7 @@ var Gnomes = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: 'row' },
-          _react2.default.createElement(
-            'h1',
-            null,
-            ' Gnomes'
-          ),
+          'Gnomes',
           _react2.default.createElement(
             'div',
             { className: 'list-group' },
@@ -22735,51 +22730,65 @@ var Gnomes = function (_React$Component) {
       var _this2 = this;
 
       if (this.state.arrayOfGnomes) {
-        return this.state.arrayOfGnomes.map(function (gnome) {
-          return _react2.default.createElement(
-            'a',
-            { onClick: function onClick() {
-                return _this2.onClick(gnome.id);
-              }, className: 'list-group-item', key: gnome.id },
-            _react2.default.createElement(
-              'div',
-              { className: 'gnome-container' },
-              _react2.default.createElement(
-                'div',
-                { className: 'gnome-name' },
-                gnome.name
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'gnome-age' },
-                ' Age: ',
-                gnome.age
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'progress gnome-progress' },
-              _react2.default.createElement(
-                'div',
-                { className: 'progress-bar-danger', role: 'progressbar', 'aria-valuenow': gnome.strenght,
-                  'aria-valuemin': '0', 'aria-valuemax': '100', style: { width: gnome.strenght + '%' } },
-                gnome.strenght + '%'
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'gnome-strenght' },
-              gnome.strenght,
-              '/100 ',
-              _react2.default.createElement(
-                'b',
-                null,
-                'Strenght'
-              )
-            )
-          );
+        return this.state.arrayOfGnomes.map(function (gnome, index) {
+          return _this2.createGnome(gnome, index);
         });
       }
+    }
+  }, {
+    key: 'createGnome',
+    value: function createGnome(gnome, index) {
+      var _this3 = this;
+
+      //  if (index<100)
+      //  {
+      return _react2.default.createElement(
+        'a',
+        { onClick: function onClick() {
+            return _this3.onClick(gnome.id);
+          }, className: 'list-group-item', key: gnome.id },
+        _react2.default.createElement(
+          'div',
+          { className: 'gnome-container' },
+          _react2.default.createElement(
+            'div',
+            { className: 'gnome-name' },
+            gnome.name
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'gnome-age' },
+            ' Age: ',
+            gnome.age
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'progress gnome-progress' },
+          _react2.default.createElement(
+            'div',
+            { className: 'progress-bar', role: 'progressbar', 'aria-valuenow': '70',
+              'aria-valuemin': '0', 'aria-valuemax': '100', style: { width: gnome.strenght + '%' } },
+            _react2.default.createElement(
+              'span',
+              { className: 'sr-only' },
+              '70% Complete'
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'gnome-strenght' },
+          gnome.strenght,
+          '/100 ',
+          _react2.default.createElement(
+            'b',
+            null,
+            'Strenght'
+          )
+        )
+      );
+      //  }
     }
   }, {
     key: 'getGnomes',
@@ -22808,14 +22817,12 @@ var Gnomes = function (_React$Component) {
 _reactDom2.default.render(_react2.default.createElement(Gnomes), container);
 
 /*
-<!--
-<div className="progress gnome--progress">
+<div className="progress gnome-progress">
   <div className="progress-bar-danger" role="progressbar" aria-valuenow={gnome.strenght}
     aria-valuemin="0" aria-valuemax="100" style={{width: gnome.strenght + '%'}}>
     {gnome.strenght + '%'}
   </div>
 </div>
--->
 */
 
 /***/ })

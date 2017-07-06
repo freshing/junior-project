@@ -11,14 +11,10 @@ var GnomeForm = class Form extends React.Component {
       age: '',
       strenght: ''
     };
-    window.onclick = function(event) {
-      if (event.target == form) {
-        form.style.display = 'none';
-      }
-    }
     this.handleChangeName = this.handleChangeName.bind(this);
     this.handleChangeAge = this.handleChangeAge.bind(this);
     this.handleChangeStrenght = this.handleChangeStrenght.bind(this);
+    this.closeForm = this.closeForm.bind(this);
     this.sendForm = this.sendForm.bind(this);
   }
   handleChangeName(event){
@@ -44,13 +40,16 @@ var GnomeForm = class Form extends React.Component {
   	    console.log(err);
       });
   }
-  updateGnomes(data){
+  closeForm(){
     this.setState({
       name: '',
       age: '',
       strenght: ''
     });
     form.style.display = 'none';
+  }
+  updateGnomes(data){
+    this.closeForm();
     this.props.parent.state.arrayOfGnomes[data.id] = data;
     this.props.parent.forceUpdate();
   }
@@ -58,7 +57,7 @@ var GnomeForm = class Form extends React.Component {
     return (
       <div className="form">
       <form onSubmit={this.sendForm} className="form-content">
-      <span className="close" onClick={() => form.style.display = 'none'}>&times;</span>
+      <span className="close" onClick={this.closeForm}>&times;</span>
       <div>
         <div className="form-title">
           Edit Gnome #{this.props.id}

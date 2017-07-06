@@ -4,24 +4,24 @@
   height: 60px;
 }
 
-.header--elements{
+.header-elements{
   font-weight: bold;
   font-size: 15px;
   margin-top: 10px;
   color: #000000;
 }
 
-.header--profile{
+.header-profile{
   font-weight: normal;
   font-size: 15px;
 }
 
-.header--profile-avatar{
+.header-profile-avatar{
   width: 25%;
   float: left;
 }
 
-.header--profile-name{
+.header-profile-name{
   margin-left: 25%;
   color: #000000;
 }

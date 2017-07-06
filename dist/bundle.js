@@ -9800,6 +9800,11 @@ var GnomeForm = function (_React$Component) {
       age: '',
       strenght: ''
     };
+    window.onclick = function (event) {
+      if (event.target == form) {
+        form.style.display = 'none';
+      }
+    };
     _this.handleChangeName = _this.handleChangeName.bind(_this);
     _this.handleChangeAge = _this.handleChangeAge.bind(_this);
     _this.handleChangeStrenght = _this.handleChangeStrenght.bind(_this);
@@ -9826,13 +9831,13 @@ var GnomeForm = function (_React$Component) {
     key: 'sendForm',
     value: function sendForm(event) {
       event.preventDefault();
-      console.log(this.props.id);
       fetch('http://master.datasource.jazzy-hr.jzapp.io/api/v1/gnomes/' + this.props.id, {
         method: 'PATCH',
         body: JSON.stringify({ name: this.state.name, age: this.state.age, strenght: this.state.strenght })
       }).then(function (response) {
         response.json().then(function (data) {
-          console.log(data);
+          data.error ? alert('Something went wrong. Try again') : console.log(data);
+          //  console.log(data);
         });
       }).catch(function (err) {
         alert('Something went wrong. Try again');
@@ -9849,13 +9854,26 @@ var GnomeForm = function (_React$Component) {
           'form',
           { onSubmit: this.sendForm, className: 'form-content' },
           _react2.default.createElement(
+            'span',
+            { className: 'close', onClick: function onClick() {
+                return form.style.display = 'none';
+              } },
+            '\xD7'
+          ),
+          _react2.default.createElement(
             'div',
             null,
+            _react2.default.createElement(
+              'div',
+              { className: 'form-title' },
+              'Edit Gnome #',
+              this.props.id
+            ),
             _react2.default.createElement(
               'label',
               null,
               'Name:',
-              _react2.default.createElement('input', { type: 'text', value: this.state.name, onChange: this.handleChangeName })
+              _react2.default.createElement('input', { type: 'text', value: this.state.name, onChange: this.handleChangeName, className: 'form-control' })
             )
           ),
           _react2.default.createElement(
@@ -9865,7 +9883,7 @@ var GnomeForm = function (_React$Component) {
               'label',
               null,
               'Age:',
-              _react2.default.createElement('input', { type: 'text', value: this.state.age, onChange: this.handleChangeAge })
+              _react2.default.createElement('input', { type: 'text', value: this.state.age, onChange: this.handleChangeAge, className: 'form-control' })
             )
           ),
           _react2.default.createElement(
@@ -9875,7 +9893,7 @@ var GnomeForm = function (_React$Component) {
               'label',
               null,
               'Strenght:',
-              _react2.default.createElement('input', { type: 'text', value: this.state.strenght, onChange: this.handleChangeStrenght })
+              _react2.default.createElement('input', { type: 'text', value: this.state.strenght, onChange: this.handleChangeStrenght, className: 'form-control' })
             )
           ),
           _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
@@ -9944,7 +9962,7 @@ var Header = function (_React$Component) {
         { className: 'container-fluid header' },
         _react2.default.createElement(
           'div',
-          { className: 'row header--elements' },
+          { className: 'row header-elements' },
           _react2.default.createElement(
             'div',
             { className: 'col-sm-2' },
@@ -9956,7 +9974,7 @@ var Header = function (_React$Component) {
             { className: 'col-sm-1' },
             _react2.default.createElement(
               'a',
-              { href: '#', className: 'header--elements' },
+              { href: '#', className: 'header-elements' },
               'Gnomes'
             )
           ),
@@ -9965,7 +9983,7 @@ var Header = function (_React$Component) {
             { className: 'col-sm-4' },
             _react2.default.createElement(
               'a',
-              { href: '#', className: 'header--elements' },
+              { href: '#', className: 'header-elements' },
               'Trolls'
             )
           ),
@@ -9974,7 +9992,7 @@ var Header = function (_React$Component) {
             { className: 'col-sm-2' },
             _react2.default.createElement(
               'a',
-              { href: 'form.html', className: 'btn btn-danger btn-md' },
+              { href: '#', className: 'btn btn-danger btn-md' },
               'Create Monster'
             )
           ),
@@ -9983,18 +10001,18 @@ var Header = function (_React$Component) {
             { className: 'col-sm-2' },
             _react2.default.createElement(
               'a',
-              { href: '#', className: 'header--profile' },
+              { href: '#', className: 'header-profile' },
               _react2.default.createElement(
                 'div',
-                { className: 'header--profile' },
+                { className: 'header-profile' },
                 _react2.default.createElement(
                   'div',
-                  { className: 'header--profile-avatar' },
+                  { className: 'header-profile-avatar' },
                   _react2.default.createElement('img', { src: 'assets/avatar.png' })
                 ),
                 _react2.default.createElement(
                   'div',
-                  { className: 'header--profile-name' },
+                  { className: 'header-profile-name' },
                   _react2.default.createElement(
                     'b',
                     null,
@@ -22671,6 +22689,7 @@ var Gnomes = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Gnomes.__proto__ || Object.getPrototypeOf(Gnomes)).call(this, props));
 
+    var gnomeForm;
     _this.state = {
       arrayOfGnomes: _this.getGnomes()
     };
@@ -22713,22 +22732,22 @@ var Gnomes = function (_React$Component) {
               }, className: 'list-group-item', key: gnome.id },
             _react2.default.createElement(
               'div',
-              { className: 'gnome--container' },
+              { className: 'gnome-container' },
               _react2.default.createElement(
                 'div',
-                { className: 'gnome--name' },
+                { className: 'gnome-name' },
                 gnome.name
               ),
               _react2.default.createElement(
                 'div',
-                { className: 'gnome--age' },
+                { className: 'gnome-age' },
                 ' Age: ',
                 gnome.age
               )
             ),
             _react2.default.createElement(
               'div',
-              { className: 'progress gnome--progress' },
+              { className: 'progress gnome-progress' },
               _react2.default.createElement(
                 'div',
                 { className: 'progress-bar-danger', role: 'progressbar', 'aria-valuenow': gnome.strenght,
@@ -22738,7 +22757,7 @@ var Gnomes = function (_React$Component) {
             ),
             _react2.default.createElement(
               'div',
-              { className: 'gnome--strenght' },
+              { className: 'gnome-strenght' },
               gnome.strenght,
               '/100 ',
               _react2.default.createElement(
@@ -22767,7 +22786,8 @@ var Gnomes = function (_React$Component) {
   }, {
     key: 'onClick',
     value: function onClick(id) {
-      _reactDom2.default.render(_react2.default.createElement(_form2.default, { id: id }), document.getElementById('form'));
+      this.gnomeForm ? form.style.display = 'block' : null;
+      this.gnomeForm = _reactDom2.default.render(_react2.default.createElement(_form2.default, { id: id }), document.getElementById('form'));
     }
   }]);
 
@@ -22775,6 +22795,17 @@ var Gnomes = function (_React$Component) {
 }(_react2.default.Component);
 
 _reactDom2.default.render(_react2.default.createElement(Gnomes), container);
+
+/*
+<!--
+<div className="progress gnome--progress">
+  <div className="progress-bar-danger" role="progressbar" aria-valuenow={gnome.strenght}
+    aria-valuemin="0" aria-valuemax="100" style={{width: gnome.strenght + '%'}}>
+    {gnome.strenght + '%'}
+  </div>
+</div>
+-->
+*/
 
 /***/ })
 /******/ ]);

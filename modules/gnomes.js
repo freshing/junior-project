@@ -7,6 +7,7 @@ const container = document.getElementById('gnomes');
 class Gnomes extends React.Component {
   constructor(props) {
     super(props);
+    var gnomeForm;
     this.state = {
       arrayOfGnomes : this.getGnomes()
     };
@@ -27,17 +28,18 @@ class Gnomes extends React.Component {
     if (this.state.arrayOfGnomes){
       return (this.state.arrayOfGnomes.map(gnome => (
         <a onClick={() => this.onClick(gnome.id)} className="list-group-item" key={gnome.id}>
-          <div className="gnome--container">
-            <div className="gnome--name">{gnome.name}</div>
-              <div className="gnome--age"> Age: {gnome.age}</div>
+          <div className="gnome-container">
+            <div className="gnome-name">{gnome.name}</div>
+              <div className="gnome-age"> Age: {gnome.age}</div>
               </div>
-                <div className="progress gnome--progress">
-                  <div className="progress-bar-danger" role="progressbar" aria-valuenow={gnome.strenght}
-                    aria-valuemin="0" aria-valuemax="100" style={{width: gnome.strenght + '%'}}>
-                    {gnome.strenght + '%'}
-                  </div>
+              <div className="progress gnome-progress">
+                <div className="progress-bar-danger" role="progressbar" aria-valuenow={gnome.strenght}
+                  aria-valuemin="0" aria-valuemax="100" style={{width: gnome.strenght + '%'}}>
+                  {gnome.strenght + '%'}
                 </div>
-            <div className="gnome--strenght">
+              </div>
+
+              <div className="gnome-strenght">
               {gnome.strenght}/100 <b>Strenght</b>
           </div>
         </a>)))
@@ -56,7 +58,8 @@ class Gnomes extends React.Component {
 
     }
     onClick(id) {
-      ReactDOM.render(
+      this.gnomeForm ? form.style.display = 'block' : null;
+      this.gnomeForm = ReactDOM.render(
         <GnomeForm id={id}/>,
         document.getElementById('form')
       );
@@ -67,3 +70,14 @@ ReactDOM.render(
   React.createElement(Gnomes),
   container
 );
+
+/*
+<!--
+<div className="progress gnome--progress">
+  <div className="progress-bar-danger" role="progressbar" aria-valuenow={gnome.strenght}
+    aria-valuemin="0" aria-valuemax="100" style={{width: gnome.strenght + '%'}}>
+    {gnome.strenght + '%'}
+  </div>
+</div>
+-->
+*/

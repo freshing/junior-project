@@ -7,55 +7,65 @@ var GnomeForm = class Form extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      valueName: '',
-      valueAge: '',
-      valueStrenght: ''
+      name: '',
+      age: '',
+      strenght: ''
     };
     this.handleChangeName = this.handleChangeName.bind(this);
     this.handleChangeAge = this.handleChangeAge.bind(this);
     this.handleChangeStrenght = this.handleChangeStrenght.bind(this);
     this.sendForm = this.sendForm.bind(this);
   }
-  render(){
-    return (
-      <form onSubmit={this.sendForm} className="form">
-         <label>
-           Name:
-           <input type="text" value={this.state.valueName} onChange={this.handleChangeName} />
-         </label>
-         <label>
-           Age:
-           <input type="text" value={this.state.valueAge} onChange={this.handleChangeAge} />
-         </label>
-         <label>
-           Strenght:
-           <input type="text" value={this.state.valueStrenght} onChange={this.handleChangeStrenght} />
-         </label>
-         <input type="submit" value="Submit" />
-       </form>
-    )
-  }
   handleChangeName(event){
-    this.setState({valueName: event.target.valueName});
+    this.setState({name: event.target.value});
   }
   handleChangeAge(event){
-    this.setState({valueAge: event.target.valueAge});
+    this.setState({age: event.target.value});
   }
   handleChangeStrenght(event){
-    this.setState({valueStrenght: event.target.valueStrenght});
+    this.setState({strenght: event.target.value});
   }
   sendForm(event){
     event.preventDefault();
     console.log(this.props.id);
     fetch('http://master.datasource.jazzy-hr.jzapp.io/api/v1/gnomes/' + this.props.id, {
-  	   method: 'PATCH'
+  	   method: 'PATCH',
+       body: JSON.stringify( { name: this.state.name, age: this.state.age, strenght: this.state.strenght } )
      }).then(function(response) {
   	     response.json().then(function(data){
-           console.log(data);
+         console.log(data);
          })
       }).catch(function(err) {
-  	     console.log(err);
+        alert('Something went wrong. Try again')
+  	    console.log(err);
       });
+  }
+  render(){
+    return (
+      <div className="form">
+      <form onSubmit={this.sendForm} className="form-content">
+      <div>
+         <label>
+           Name:
+           <input type="text" value={this.state.name} onChange={this.handleChangeName} />
+         </label>
+         </div>
+         <div>
+         <label>
+           Age:
+           <input type="text" value={this.state.age} onChange={this.handleChangeAge} />
+         </label>
+         </div>
+         <div>
+         <label>
+           Strenght:
+           <input type="text" value={this.state.strenght} onChange={this.handleChangeStrenght} />
+         </label>
+         </div>
+         <input type="submit" value="Submit" />
+       </form>
+       </div>
+    )
   }
 }
 

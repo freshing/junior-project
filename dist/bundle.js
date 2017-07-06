@@ -9796,9 +9796,9 @@ var GnomeForm = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Form.__proto__ || Object.getPrototypeOf(Form)).call(this, props));
 
     _this.state = {
-      valueName: '',
-      valueAge: '',
-      valueStrenght: ''
+      name: '',
+      age: '',
+      strenght: ''
     };
     _this.handleChangeName = _this.handleChangeName.bind(_this);
     _this.handleChangeAge = _this.handleChangeAge.bind(_this);
@@ -9808,46 +9808,19 @@ var GnomeForm = function (_React$Component) {
   }
 
   _createClass(Form, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'form',
-        { onSubmit: this.sendForm, className: 'form' },
-        _react2.default.createElement(
-          'label',
-          null,
-          'Name:',
-          _react2.default.createElement('input', { type: 'text', value: this.state.valueName, onChange: this.handleChangeName })
-        ),
-        _react2.default.createElement(
-          'label',
-          null,
-          'Age:',
-          _react2.default.createElement('input', { type: 'text', value: this.state.valueAge, onChange: this.handleChangeAge })
-        ),
-        _react2.default.createElement(
-          'label',
-          null,
-          'Strenght:',
-          _react2.default.createElement('input', { type: 'text', value: this.state.valueStrenght, onChange: this.handleChangeStrenght })
-        ),
-        _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
-      );
-    }
-  }, {
     key: 'handleChangeName',
     value: function handleChangeName(event) {
-      this.setState({ valueName: event.target.valueName });
+      this.setState({ name: event.target.value });
     }
   }, {
     key: 'handleChangeAge',
     value: function handleChangeAge(event) {
-      this.setState({ valueAge: event.target.valueAge });
+      this.setState({ age: event.target.value });
     }
   }, {
     key: 'handleChangeStrenght',
     value: function handleChangeStrenght(event) {
-      this.setState({ valueStrenght: event.target.valueStrenght });
+      this.setState({ strenght: event.target.value });
     }
   }, {
     key: 'sendForm',
@@ -9855,14 +9828,59 @@ var GnomeForm = function (_React$Component) {
       event.preventDefault();
       console.log(this.props.id);
       fetch('http://master.datasource.jazzy-hr.jzapp.io/api/v1/gnomes/' + this.props.id, {
-        method: 'PATCH'
+        method: 'PATCH',
+        body: JSON.stringify({ name: this.state.name, age: this.state.age, strenght: this.state.strenght })
       }).then(function (response) {
         response.json().then(function (data) {
           console.log(data);
         });
       }).catch(function (err) {
+        alert('Something went wrong. Try again');
         console.log(err);
       });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'form' },
+        _react2.default.createElement(
+          'form',
+          { onSubmit: this.sendForm, className: 'form-content' },
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(
+              'label',
+              null,
+              'Name:',
+              _react2.default.createElement('input', { type: 'text', value: this.state.name, onChange: this.handleChangeName })
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(
+              'label',
+              null,
+              'Age:',
+              _react2.default.createElement('input', { type: 'text', value: this.state.age, onChange: this.handleChangeAge })
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(
+              'label',
+              null,
+              'Strenght:',
+              _react2.default.createElement('input', { type: 'text', value: this.state.strenght, onChange: this.handleChangeStrenght })
+            )
+          ),
+          _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
+        )
+      );
     }
   }]);
 

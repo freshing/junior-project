@@ -5,9 +5,17 @@
   padding-top: 40px;
 }
 
+.gnome-loading{
+  width: 100%;
+}
 .gnome-container{
   float: left;
   width: 70%;
+}
+
+.gnome-image{
+  width: 15%;
+  float: left;
 }
 
 .gnome-progress{

@@ -80,7 +80,7 @@ var GnomeForm = class Form extends React.Component {
            <input type="text" value={this.state.strenght} onChange={this.handleChangeStrenght} className="form-control" />
          </label>
          </div>
-         <input type="submit" value="Submit" />
+         <input type="submit" className="btn btn-danger btn-md" value="Submit" />
        </form>
        </div>
     )

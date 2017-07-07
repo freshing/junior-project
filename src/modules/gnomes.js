@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import GnomeForm from './form.js';
 import '../styles/style.css';
+import loading from '../assets/loading.gif';
+import gnomeImage from '../assets/g.png';
 
 const container = document.getElementById('gnomes');
 
@@ -10,20 +12,30 @@ class Gnomes extends React.Component {
     super(props);
     var gnomeForm;
     this.state = {
+      page: 1,
       arrayOfGnomes : this.getGnomes()
     };
+    this.loadNextPage = this.loadNextPage.bind(this);
+    this.loadPrevPage = this.loadPrevPage.bind(this);
   }
   render(){
+    console.log(this.state);
     return (
       <div className="container-fluid gnome">
         <div className="row">
            Gnomes
-          <div className="list-group">
-            {this.createGnomeList()}
+           <div>
+          {this.state.arrayOfGnomes ? this.showGnomes() : <img className="gnome-loading" src={loading} />}
           </div>
         </div>
       </div>
     )
+  }
+  loadNextPage(){
+    this.setState({page: this.state.page+1});
+  }
+  loadPrevPage(){
+    this.setState({page: this.state.page-1});
   }
   createGnomeList() {
     if (this.state.arrayOfGnomes){
@@ -31,12 +43,13 @@ class Gnomes extends React.Component {
       }
   }
   createGnome(gnome, index){
-  //  if (index<100)
-  //  {
+   if (index >= (this.state.page-1)*100 && index < this.state.page*100)
+   {
       return (
         (
           <a onClick={() => this.onClick(gnome.id)} className="list-group-item" key={gnome.id}>
             <div className="gnome-container">
+              <div className="gnome-image"><img src={gnomeImage} /></div>
               <div className="gnome-name">{gnome.name}</div>
                 <div className="gnome-age"> Age: {gnome.age}</div>
                 </div>
@@ -53,7 +66,22 @@ class Gnomes extends React.Component {
           </a>
         )
       )
-  //  }
+   }
+  }
+  showGnomes(){
+    return(
+      <div className="list-group">
+        {this.createGnomeList()}
+        <div className="row">
+          <div className="col-sm-1"><input type="button" className="btn btn-danger btn-md"
+            disabled={(this.state.page==1) ? 'disabled' : null} value="previous"
+            onClick={this.loadPrevPage} /></div>
+          <div className="col-sm-10"></div>
+          <div className="col-sm-1" float="right"><input type="button" className="btn btn-danger btn-md" value="next"
+            onClick={this.loadNextPage} disabled={(this.state.page>=this.state.arrayOfGnomes.length/100) ? 'disabled' : null}/></div>
+        </div>
+        </div>
+    )
   }
   getGnomes(){
       fetch('http://master.datasource.jazzy-hr.jzapp.io/api/v1/gnomes', {
@@ -80,12 +108,3 @@ ReactDOM.render(
   React.createElement(Gnomes),
   container
 );
-
-/*
-<div className="progress gnome-progress">
-  <div className="progress-bar-danger" role="progressbar" aria-valuenow={gnome.strenght}
-    aria-valuemin="0" aria-valuemax="100" style={{width: gnome.strenght + '%'}}>
-    {gnome.strenght + '%'}
-  </div>
-</div>
-*/

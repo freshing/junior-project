@@ -16,15 +16,14 @@ module.exports = class Header extends React.Component {
           <div className="col-sm-2"><a href="#" className="header-profile" >
             <div className="header-profile">
               <div className="header-profile-avatar">
-                <img src={avatar} />
+                <img src={avatar}/>
               </div>
               <div className="header-profile-name">
                 <b>Robert Łabuś</b><br/> Game Master
               </div>
-            </div>
-          </a>
+            </div></a>
+          </div>
         </div>
-      </div>
       </div>
     )
   }

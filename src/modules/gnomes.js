@@ -74,7 +74,7 @@ module.exports = class Gnomes extends React.Component {
             disabled={(this.state.page==1) ? 'disabled' : null} value="previous"
             onClick={this.loadPrevPage} /></div>
           <div className="col-sm-10"></div>
-          <div className="col-sm-1" float="right"><input type="button" className="btn btn-danger btn-md" value="next"
+          <div className="col-sm-1"><input type="button" className="btn btn-danger btn-md" value="next"
             onClick={this.loadNextPage} disabled={(this.state.page>=this.state.arrayOfGnomes.length/100) ? 'disabled' : null}/></div>
         </div>
       </div>

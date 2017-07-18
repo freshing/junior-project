@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import '../styles/form.css';
 
 module.exports = class Form extends React.Component {

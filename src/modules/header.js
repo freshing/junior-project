@@ -1,14 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import avatar from '../assets/avatar.png';
 import logo from '../assets/logo.png';
-import '../styles/style.css';
+import '../styles/header.css';
 
-
-const container = document.getElementById('header');
-
-
-class Header extends React.Component {
+module.exports = class Header extends React.Component {
   render(){
     return (
       <div className="container-fluid header">
@@ -24,7 +19,7 @@ class Header extends React.Component {
                 <img src={avatar} />
               </div>
               <div className="header-profile-name">
-                <b>Robert Łabuś</b><br></br> Game Master
+                <b>Robert Łabuś</b><br/> Game Master
               </div>
             </div>
           </a>
@@ -34,7 +29,3 @@ class Header extends React.Component {
     )
   }
 }
-ReactDOM.render(
-  React.createElement(Header),
-  container
-);

@@ -1,15 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import GnomeForm from './form.js';
-import '../styles/style.css';
+import '../styles/gnomes.css';
 import loading from '../assets/loading.gif';
 import gnomeImage from '../assets/g.png';
 
-const container = document.getElementById('gnomes');
-
-class Gnomes extends React.Component {
-  constructor(props) {
-    super(props);
+module.exports = class Gnomes extends React.Component {
+  constructor() {
+    super();
     var gnomeForm;
     this.state = {
       page: 1,
@@ -19,9 +17,9 @@ class Gnomes extends React.Component {
     this.loadPrevPage = this.loadPrevPage.bind(this);
   }
   render(){
-    console.log(this.state);
     return (
       <div className="container-fluid gnome">
+        <div id="form"></div>
         <div className="row">
            Gnomes
            <div>
@@ -59,7 +57,6 @@ class Gnomes extends React.Component {
                   <span className="sr-only">70% Complete</span>
                   </div>
                 </div>
-
                 <div className="gnome-strenght">
                 {gnome.strenght}/100 <b>Strenght</b>
             </div>
@@ -80,7 +77,7 @@ class Gnomes extends React.Component {
           <div className="col-sm-1" float="right"><input type="button" className="btn btn-danger btn-md" value="next"
             onClick={this.loadNextPage} disabled={(this.state.page>=this.state.arrayOfGnomes.length/100) ? 'disabled' : null}/></div>
         </div>
-        </div>
+      </div>
     )
   }
   getGnomes(){
@@ -103,8 +100,3 @@ class Gnomes extends React.Component {
       );
     }
 }
-
-ReactDOM.render(
-  React.createElement(Gnomes),
-  container
-);

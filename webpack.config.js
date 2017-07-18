@@ -5,7 +5,7 @@ module.exports = {
         extensions: ['.css', '.js'],
 },
     entry: [
-      "./entry.js",
+      "./index.js",
       "./index.html"
     ],
     context: __dirname + '/src',

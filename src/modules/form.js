@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import '../styles/style.css';
+import '../styles/form.css';
 
-
-
-var GnomeForm = class Form extends React.Component {
-  constructor(props){
-    super(props);
+module.exports = class Form extends React.Component {
+  constructor(){
+    super();
     this.state = {
       name: '',
       age: '',
@@ -86,6 +84,3 @@ var GnomeForm = class Form extends React.Component {
     )
   }
 }
-
-
-module.exports = GnomeForm;
